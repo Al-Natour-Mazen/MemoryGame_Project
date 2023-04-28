@@ -2,20 +2,20 @@
     <div class="board">
       <div v-if="game_Over" >
         <div class="row" v-for="(row, rowIndex) in board" :key="rowIndex">
-            <div class="card" v-for="(card, colIndex) in row" :key="colIndex" 
-             @click="flipCard(rowIndex, colIndex)"
-            :class="{ 'card-not-flipped': !card.flipped }">
-                <div class="card-back card-hidden"></div>
-                <div class="card-front">{{  card.value }}</div>
+            <div class="card" v-for="(card, colIndex) in row" :key="colIndex" >
+              <div :class="['card-shape', { 'card-not-flipped': !card.flipped, 'card-front': card.flipped }]">
+                {{ card.value }}
+              </div>
             </div>
         </div>
       </div>
-      <div v-else>
+      <div v-else-if="!game_Over">
         <div class="row" v-for="(row, rowIndex) in board" :key="rowIndex">
             <div class="card" v-for="(card, colIndex) in row" :key="colIndex" 
              @click="flipCard(rowIndex, colIndex)">
-                <div class="card-back card-hidden"></div>
-                <div class="card-front">{{ card.flipped ? card.value : '' }}</div>
+                <div :class="['card-shape',{ 'card-front': card.flipped, 'card-back': !card.flipped }]">
+                    {{ card.flipped ? card.value : '' }}
+                </div>
             </div>    
         </div>
       </div>
@@ -55,15 +55,14 @@
     width: 100px;
     height: 100px;
     margin-left: 50px;
+    margin-right: 50px;
     margin-top: 10px;
     position: relative;
     perspective: 1000px;
     cursor: pointer;
   }
-  .card-hidden {
-  display: none;
-}
-.card-front, .card-back {
+
+.card-shape {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -79,10 +78,11 @@
   }
   
   .card-back {
-    background-color: #000;
+    background-color: #5c5885;
   }
   .card-not-flipped {
-    background-color: #FFC0CB; /* Choisissez une couleur différente */
+    background-color: #c41e39; /* Choisissez une couleur différente */
+    color: aliceblue;
   }
 </style>
   
