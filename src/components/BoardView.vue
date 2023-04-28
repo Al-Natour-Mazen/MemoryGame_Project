@@ -1,10 +1,22 @@
 <template>
     <div class="board">
-      <div class="row" v-for="(row, rowIndex) in board" :key="rowIndex">
-        <div class="card" v-for="(card, colIndex) in row" :key="colIndex" 
-          @click="flipCard(rowIndex, colIndex)">
-            <div class="card-back card-hidden"></div>
-            <div class="card-front">{{ card.flipped ? card.value : '' }}</div>
+      <div v-if="game_Over" >
+        <div class="row" v-for="(row, rowIndex) in board" :key="rowIndex">
+            <div class="card" v-for="(card, colIndex) in row" :key="colIndex" 
+             @click="flipCard(rowIndex, colIndex)"
+            :class="{ 'card-not-flipped': !card.flipped }">
+                <div class="card-back card-hidden"></div>
+                <div class="card-front">{{  card.value }}</div>
+            </div>
+        </div>
+      </div>
+      <div v-else>
+        <div class="row" v-for="(row, rowIndex) in board" :key="rowIndex">
+            <div class="card" v-for="(card, colIndex) in row" :key="colIndex" 
+             @click="flipCard(rowIndex, colIndex)">
+                <div class="card-back card-hidden"></div>
+                <div class="card-front">{{ card.flipped ? card.value : '' }}</div>
+            </div>    
         </div>
       </div>
     </div>
@@ -14,7 +26,8 @@
   export default {
     props: {
       board: Array,
-      flippedCards: Array
+      flippedCards: Array,
+      game_Over: Boolean
     },
     methods: {
       flipCard(rowIndex, colIndex) {
@@ -29,6 +42,7 @@
   .board {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   .row {
@@ -40,7 +54,8 @@
   .card {
     width: 100px;
     height: 100px;
-    margin: 10px;
+    margin-left: 50px;
+    margin-top: 10px;
     position: relative;
     perspective: 1000px;
     cursor: pointer;
@@ -65,6 +80,9 @@
   
   .card-back {
     background-color: #000;
+  }
+  .card-not-flipped {
+    background-color: #FFC0CB; /* Choisissez une couleur différente */
   }
 </style>
   

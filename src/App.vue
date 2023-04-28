@@ -2,7 +2,7 @@
   <div>
     <scoreboard :score="score" :high-score="highScore" />
     <timer :time-remaining="timeRemaining" />
-    <board :board="board" :flipped-cards="flippedCards" @flip-card="flipCard" />
+    <board :board="board" :flipped-cards="flippedCards" @flip-card="flipCard" :game_Over="gameover" />
     <gameover v-if="gameOver" :message="gameOverMessage" @restart-game="restartGame" />
     <modal v-if="showModal" :title="modalTitle" :message="modalMessage" @close="closeModal" />
   </div>
@@ -53,7 +53,7 @@ export default {
       });
       const shuffledCards = this.shuffleArray(cards);
       const board = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < cardValues.length; i++) {
         board.push(shuffledCards.slice(i * 4, (i + 1) * 4));
       }
       this.board = board;
@@ -101,7 +101,7 @@ export default {
           // cards match
           card1.matched = true;
           card2.matched = true;
-          this.score += 2;
+          this.score += 1;
           this.flippedCards = [];
         } else {
           // cards don't match
@@ -109,7 +109,7 @@ export default {
           card1.flipped = false;
           card2.flipped = false;
           this.flippedCards = [];
-          }, 1000);
+          }, 600);
         this.score--;
         }
       }
