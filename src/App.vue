@@ -30,7 +30,7 @@ export default {
       highScore: 0,
       timeRemaining: 0,
       numberofcard : 0,
-      board: [], // array of arrays containing card objects
+      board: [], // array containing card objects
       flippedCards: [], // array of card objects that are currently flipped
       gameOver: false,
       gameOverBoard : false,
