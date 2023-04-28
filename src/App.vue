@@ -54,13 +54,8 @@ export default {
       this.gameOverBoard = false;
       
        // ask user for number of cards
-       let nb_cartes = parseInt(prompt("Combien de cartes voulez-vous utiliser ?"));
-      while (nb_cartes % 2 !== 0) {
-        nb_cartes = parseInt(prompt("Le nombre de cartes doit être pair. Combien de cartes voulez-vous utiliser ?"));
-      }
-      this.numberofcard = nb_cartes;
+      this.handleUserRequeste();
 
-      
       // set up cars
       // const cardValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G'];
       const cardValues = [];
@@ -82,11 +77,22 @@ export default {
         if (this.timeRemaining > 0) {
           this.timeRemaining--;
         } else {
-          this.GamerOvermethode("");
+          this.handleGamerOver("");
         }
       }, 1000);
     },
-    GamerOvermethode(score){
+    handleUserRequeste(){
+      let nb_cartes = parseInt(prompt("Combien de cartes voulez-vous utiliser ?"));
+      while (nb_cartes % 2 !== 0) {
+        const ret = prompt("Le nombre de cartes doit être pair. Combien de cartes voulez-vous utiliser ?")
+        if(ret !== null)
+          nb_cartes = parseInt();
+        else
+          return;
+      }
+      this.numberofcard = nb_cartes;
+    },
+    handleGamerOver(score){
       clearInterval(this.timerInterval);
       this.gameOverBoard = true;
       this.showModal = true;
@@ -198,7 +204,7 @@ export default {
       }, 600);
       this.score--;
       if (this.score < -10) {
-        this.gameOver("score");
+        this.handleGamerOver("score");
       }
     },
     checkForGameWin() {
