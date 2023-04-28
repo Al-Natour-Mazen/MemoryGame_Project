@@ -51,7 +51,7 @@ export default {
       this.timeRemaining = 30;
       this.flippedCards = [];
       this.gameOver = false;
-      this.gameOverBoard = true;
+      this.gameOverBoard = false;
       
        // ask user for number of cards
        let nb_cartes = parseInt(prompt("Combien de cartes voulez-vous utiliser ?"));
@@ -60,7 +60,8 @@ export default {
       }
       this.numberofcard = nb_cartes;
 
-      // set up the board
+      
+      // set up cars
       // const cardValues = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G'];
       const cardValues = [];
       while (cardValues.length < this.numberofcard) {
@@ -72,6 +73,7 @@ export default {
       }
     
       const cardsShuffled = this.ShuffleCards(cardValues);
+      // set up the board
       const board = this.createBoard(cardsShuffled, cardValues.length);
       this.board = board;
 
