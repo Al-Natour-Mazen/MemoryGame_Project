@@ -23,7 +23,7 @@ En suivant ce lien /By following this link :
 
 ===================Prerequisite/Prérequis==================
 
-*  Node.js And Vue.js
+*  Node.js && Vue.js && Vue/CLI
 
 * Project setup : 
 ```
@@ -31,6 +31,6 @@ npm install :
 ```
 * Compiles and hot-reloads for development
 ```
-npm run serve
+npm run serve OR vue
 ```
 
