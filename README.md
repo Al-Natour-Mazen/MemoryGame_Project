@@ -8,7 +8,7 @@ A Developper Project from France.
 * The application is still being improved, thank you for your understanding. You can play it by installing the project (see the prerequisites part).
 * Feel free to check out my code but all rights reserved.
 
-console.log(" [ /////// Have fun ;) ///////] "<<std::endl);
+console.log(" [ /////// Have fun ;) ///////] ");
 
 ======================FRANÇAIS=====================
 
