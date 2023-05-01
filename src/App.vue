@@ -2,7 +2,7 @@
   <div id="myappbody">
     <scoreboard :score="score" :high-score="highScore" />
     <timer :time-remaining="timeRemaining" />
-    <board :board="board" :flipped-cards="flippedCards" @flip-card="flipCard" :game_Over="gameOverBoard" />
+    <board :board="board"  @flip-card="flipCard" :game_Over="gameOverBoard" />
     <gameover v-if="gameOver" :message="gameOverMessage" @restart-game="restartGame" />
     <modal v-if="showModal" :title="modalTitle" :message="modalMessage" @close="closeModal" />
   </div>

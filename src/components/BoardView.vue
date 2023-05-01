@@ -26,7 +26,6 @@
   export default {
     props: {
       board: Array,
-      flippedCards: Array,
       game_Over: Boolean
     },
     methods: {
